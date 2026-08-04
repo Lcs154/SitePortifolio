@@ -1,0 +1,190 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Lucas</title>
+</head>
+<body>
+    <header>
+        <a href="">
+            <img src="{% static 'images/fotinha.png' %}" alt="gato preto" class="header-logo">
+        </a>
+        <nav class="btn-tab-content">
+            <button class="btn-tab activated" data-tab="home" onclick="changeContent(this)">HOME</button>
+            <button class="btn-tab" data-tab="projetos" onclick="changeContent(this)">PROJETOS</button>
+            <button class="btn-tab" data-tab="contato" onclick="changeContent(this)">CONTATO</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="tab-content active" id="home">
+            <div class="wrapper">
+                <div class="column">
+                    <h1 class="title">Sobre mim</h1>
+                    <div class="about-me">
+                        <p>Olá, me chamo Lucas, sou graduado em Ciência da Computação, na IBMR.</p>
+                        <p>Seja bem-vindo(a) ao meu portfólio, aqui posto alguns dos meus projetos.</p>
+                        <p>Atualmente desenvolvo projetos por conta própria.</p>
+                    </div>
+                    <h1 class="title">Redes Sociais</h1>
+                    <div class="media-links">
+                        <a href="https://www.linkedin.com/in/lucas-ribeiro-3441a9381/?skipRedirect=true" target="_blank">
+                            <img src="{% static 'images/linkedin.png' %}" alt="linkedin logo">
+                        </a>
+
+                        <a href="https://github.com/Lcs154" target="_blank">
+                            <img src="{% static 'images/github.png' %}" alt="github logo">
+                        </a>
+
+                        <a href="https://x.com/Lucaslrf01" target="_blank">
+                            <img src="{% static 'images/twitter.png' %}" alt="twitter logo">
+                        </a>
+
+                        <a href="https://www.youtube.com/@LCSSS_" target="_blank">
+                            <img src="{% static 'images/youtube.png' %}" alt="youtube logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="column2">
+                    <h1 class="title">Habilidades</h1>
+                    <div class="backend">
+                        <h2 class="title">Back-end</h2>
+                        <div class="knowledge-imgs">
+                            <span><img src="{% static 'images/python.png' %}" alt="python logo">
+                                Python
+                            </span>
+
+                            <span><img src="{% static 'images/django.webp' %}" alt="django logo">
+                                django
+                            </span>
+
+                            <span><img src="{% static 'images/java.png' %}" alt="java logo">
+                                Java
+                            </span>
+
+                            <span><img src="{% static 'images/cpp.webp' %}" alt="cpp logo">
+                                Cpp
+                            </span>
+
+                            <span><img src="{% static 'images/mysql.png' %}" alt="mysql logo">
+                                MySQL
+                            </span>
+
+                            <span><img src="{% static 'images/postgresql.webp' %}" alt="postgresql logo">
+                                PostgreSQL
+                            </span>
+                            
+                            <span><img src="{% static 'images/fastAPI.png' %}" alt="fastAPI logo">
+                                FastAPI
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="frontend">
+                        <h2 class="title">Front-end</h2>
+                        <div class="knowledge-imgs">
+                            <span><img src="{% static 'images/html.png' %}" alt="html logo">
+                                HTML
+                            </span>
+
+                            <span><img src="{% static 'images/css.png' %}" alt="css logo">
+                                CSS
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <h2 class="title">Skills</h2>
+                        <div class="knowledge-imgs">
+                            <span><img src="{% static 'images/excel.png' %}" alt="excel logo">
+                                Excel
+                            </span>
+                            <span><img src="{% static 'images/word.png' %}" alt="word logo">
+                                Word
+                            </span>
+                            <span><img src="{% static 'images/powerbi.png' %}" alt="powerbi logo">
+                                PowerBI
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="projetos">
+            <div class="wrapper">
+                <div class="column">
+                    <div class="projetos">
+                        <h1 class="title">Projetos</h1>
+                        <div class="content-projetos">
+                            <ul class="grid-projetos">
+                                {% for projeto in projetos %}
+                                <li class="card-projeto">
+                                    <button class="btn-project" type="button" 
+                                    onclick="showResumo(this, '{{ projeto.name }}','{{ projeto.description }}', '{{ projeto.url }}')">
+                                        {{ projeto.name }}
+                                    </button>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="resumo-projetos">
+                        <h1 class="title">Resumo</h1>
+                        <div class="content-resumo">
+                            <h2 id="project-name"></h2>
+                            <p id="project-description">Um breve resumo sobre os projetos do meu GitHub</p>
+                            <a href="" id="project-url" target="_blank"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="contato">
+            <div class="wrapper">
+                <div class="resumo">
+                    <h1>Tem interesse em me contatar? Deixe sua mensagem.</h1>
+                    <p>Estou disponível para novos projetos e oportunidades. 
+                    Se você tem uma ideia, precisa de um site ou quer tirar um projeto do papel, me envie uma mensagem.</p>
+                    <p>Email: <em>lucaslrf01.trabalho@gmail.com</em></p>
+                    <p>WhatsApp: <em>+55(21)98040-9767</em></p>           
+                </div>
+                <div class="column">
+                    <h1 class="title">Contato</h1>
+                    <div class="contato">
+                        <form method="POST" class="formulario">
+                            {% csrf_token %}
+                            <label for="nome">
+                                Nome:
+                                <input type="text" name="nome" id="nome" placeholder="Insira seu nome" required autocomplete="off">
+                            </label>
+                            <label for="email">
+                                Email:
+                                <input type="email" name="email" id="email" placeholder="Insira seu email" required autocomplete="off">
+                            </label>
+                            <label for="assunto">
+                                Assunto:
+                                <input type="text" name="assunto" id="assunto" placeholder="Insira o assunto" autocomplete="off">
+                            </label>
+                            <label for="texto">
+                                Escrever email:
+                                <textarea name="texto" id="texto" placeholder="Escrever email" required autocomplete="off"></textarea>
+                            </label>
+
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="{% static 'scripts/script.js' %}"></script>
+</body>
+</html>
